@@ -45,7 +45,7 @@ class ArrayPrintRParser
         $closingParanthesisNeeded = false;
 
         if (StringExtensions::StartsWith($printRString, "Array(")) {
-            $phpString .= "Array(";
+            $phpString .= "Array(\n\t";
             $printRString = ltrim($printRString, "Array(");
             $closingParanthesisNeeded = true;
         }
@@ -69,7 +69,7 @@ class ArrayPrintRParser
             if (StringExtensions::StartsWith($printRString, "[")) {
 
                 if ($oneKeyAlreadyWritten === true) {
-                    $phpString .= ",";
+                    $phpString .= ",\n\t";
                 }
 
                 $oneKeyAlreadyWritten = true;
@@ -110,7 +110,7 @@ class ArrayPrintRParser
         } while (true);
 
         if ($closingParanthesisNeeded) {
-            $phpString .= "";
+            $phpString .= "\n";
         }
 
     }
