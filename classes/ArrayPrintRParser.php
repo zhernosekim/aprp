@@ -57,6 +57,7 @@ class ArrayPrintRParser
             $this->trim($printRString);
 
             if (StringExtensions::StartsWith($printRString, ")")) {
+				$phpString .= ")";
                 $printRString = substr($printRString, 1);
             }
 
@@ -109,7 +110,7 @@ class ArrayPrintRParser
         } while (true);
 
         if ($closingParanthesisNeeded) {
-            $phpString .= ")";
+            $phpString .= "";
         }
 
     }
