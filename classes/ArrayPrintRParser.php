@@ -26,8 +26,9 @@ class ArrayPrintRParser
 
         // Remove line breaks and remove blanks
         $temp = str_replace(array("\n", "\r"), "", $temp);
-        $temp = str_replace("Array (", "Array(", $temp);
         $temp = str_replace(" => ", "=>", $temp);
+        $temp = preg_replace('@stdClass Object\s*\(@msU', 'Array(', $temp);
+        $temp = preg_replace('@Array\s*\(@msU', 'Array(', $temp);
 
         if (!StringExtensions::StartsWith($temp, "Array(")) {
             throw new exception("String does not start with Array.");
